@@ -6,6 +6,8 @@ set(CMAKE_C_STANDARD 11)
 include_directories(.)
 
 add_executable(Numeros_Racionais
-        main.c
-        racional.c
-        racional.h)
+    main.c
+    racional.c
+    racional.h)
+
+target_link_libraries(Numeros_Racionais m)

@@ -1,6 +1,7 @@
 //Inclusão de bibliotecas
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 
 #include "racional.h"
@@ -151,6 +152,25 @@ tRacional* quadradoRacional(tRacional* racional1) {
     return quadrado;
 }
 
+//Calcula a raiz de um número racional
+tRacional* raizRacional(tRacional* racional, int precisao) {
+    double decimal = sqrt((double)racional->num / (double)racional->den);
+
+    long int den = 1;
+    for (int i = 0; i < precisao; i++) {
+        den *= 10;
+    }
+
+    long int num = decimal * den + 0.5;
+    long int mdc = algoritmoEuclideano(num, den);
+
+    tRacional* raiz = alocaRacional();
+    raiz->num = num / mdc;
+    raiz->den = den / mdc;
+
+    return raiz;
+}
+
 //Reduz um número racional a uma fração irredutível
 tRacional* reduzRacional(tRacional* racional) {
     long int mdc = algoritmoEuclideano(racional->num,racional->den);
@@ -168,4 +188,13 @@ void imprimeRacional(tRacional* racional) {
 double converteRacional(tRacional* racional) {
     double value = (double)racional->num / (double)racional->den;
     return value;
+}
+
+//Função que imprime um racional em um arquivo .CSV
+void imprimeCSV(tRacional* racional) {
+    char arquivo[] = "racional.csv";
+    FILE* r = fopen(arquivo,"a+");
+
+    fprintf(r,"%ld,%ld\n",racional->num,racional->den);
+    fclose(r);
 }

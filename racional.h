@@ -19,8 +19,10 @@ tRacional* multiplicaRacional(tRacional* racional1, tRacional* racional2);
 tRacional* acumulaProduto(tRacional* racional1, tRacional* racional2);
 tRacional* divideRacional(tRacional* racional1, tRacional* racional2);
 tRacional* quadradoRacional(tRacional* racional1);
+tRacional* raizRacional(tRacional* racional, int precisao);
 tRacional* reduzRacional(tRacional* racional);
 void imprimeRacional(tRacional* racional);
 double converteRacional(tRacional* racional);
+void imprimeCSV(tRacional* racional);
 
 #endif

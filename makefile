@@ -14,7 +14,7 @@ OBJ=$(C_SOURCE:.c=.o)
 CC=gcc
 
 #Parametros de compilacao
-CC_FLAGS=-c
+CC_FLAGS=-c -lm
 
 #Compilar tudo
 all: $(PROJ_NAME)
